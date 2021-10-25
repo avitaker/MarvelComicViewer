@@ -1,4 +1,4 @@
-package com.avinashdavid.marvelcomicviewer.api
+package com.avinashdavid.marvelcomicviewer.util
 
 import com.avinashdavid.marvelcomicviewer.BuildConfig
 import com.avinashdavid.marvelcomicviewer.api.apis.DocspublicApi
@@ -47,10 +47,10 @@ private fun createOkHttpClient(): OkHttpClient {
                 this.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                 this.readTimeout(240, TimeUnit.SECONDS)
                 this.connectTimeout(240, TimeUnit.SECONDS)
+                addInterceptor(CurlLoggerInterceptor())
             }
         }
         .addInterceptor(getHeaderInterceptor())
-        .addInterceptor(CurlLoggerInterceptor())
         .build()
 }
 

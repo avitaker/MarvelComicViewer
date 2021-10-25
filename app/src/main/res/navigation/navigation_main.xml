@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/comicInfoFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/comicInfoFragment"
         android:name="com.avinashdavid.marvelcomicviewer.comicInfo.ComicInfoFragment"
-        android:label="ComicInfoFragment" />
+        android:label="ComicInfoFragment" >
+        <action
+            android:id="@+id/action_comicInfoFragment_to_fullScreenImageViewerFragment"
+            app:destination="@id/fullScreenImageViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullScreenImageViewerFragment"
+        android:name="shared.FullScreenImageViewerFragment"
+        android:label="FullScreenImageViewerFragment" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="shared.SplashFragment"
+        android:label="SplashFragment" />
 </navigation>

@@ -2,16 +2,21 @@
     <string name="app_name">Marvel Comic Viewer</string>
 
     <string name="comic_info">Comic Info</string>
-    <string name="view_full_image">View Full Image</string>
 
-    <string name="message_cover_image_not_available">Cover image not available</string>
+    <string name="view_full_image">View Full Image</string>
+    <string name="message_image_not_viewable">Image is not viewable</string>
+    <string name="transition_name_full_screen_image">transition_name_full_screen_image</string>
+
     <string name="previous">Previous</string>
     <string name="next">Next</string>
 
     <string name="creators">Creators</string>
 
     <string name="format_featuring_characters">Featuring %1$s</string>
+    <string name="format_comic_index">%1$d of %2$d</string>
 
     <string name="cd_imageviewer">Full screen image</string>
     <string name="cd_comic_cover">Comic cover image</string>
+
+    <string name="marvel_attribution">Data provided by Marvel. © 2014 Marvel</string>
 </resources>

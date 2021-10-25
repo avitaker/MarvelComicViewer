@@ -6,15 +6,14 @@
     android:background="@color/black">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ivFullScreenImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="40dp"
         android:scaleType="fitCenter"
-        android:transitionName="@string/transition_name_full_screen_image"
-        android:contentDescription="@string/cd_imageviewer"/>
+        android:src="@drawable/ic_marvel_logo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

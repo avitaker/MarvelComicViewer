@@ -5,8 +5,6 @@ import android.os.Build
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
 import java.io.UnsupportedEncodingException
@@ -16,26 +14,6 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import kotlin.experimental.and
 import kotlin.experimental.or
-
-fun marvelSharedPreferences() = PreferenceManager.getDefaultSharedPreferences(MainActivity.instance.get())
-
-fun encryptedMarvelSharedPreferencesIfAvailable() : SharedPreferences {
-    if (Build.VERSION.SDK_INT >= 23) {
-        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
-        val fileName = "marvel_sensitive_data.txt"
-        return EncryptedSharedPreferences
-            .create(
-                fileName,
-                masterKeyAlias,
-                MainActivity.instance.get()!!,
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            )
-    } else {
-        return marvelSharedPreferences()
-    }
-}
 
 fun makeMD5(md5: String): String {
     val MD5 = "MD5"

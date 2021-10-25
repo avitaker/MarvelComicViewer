@@ -3,16 +3,16 @@ package com.avinashdavid.marvelcomicviewer.comicList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.avinashdavid.marvelcomicviewer.api.ApiSignature
-import com.avinashdavid.marvelcomicviewer.api.marvelApi
 import com.avinashdavid.marvelcomicviewer.api.models.Comic
+import com.avinashdavid.marvelcomicviewer.util.ApiSignature
+import com.avinashdavid.marvelcomicviewer.util.marvelApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ComicListViewModel: ViewModel() {
-    val maxComics = 50
+    val maxComics = 100
 
     private val _comics = MutableLiveData<Array<Comic>?>(null)
     val comics: LiveData<Array<Comic>?> get() = _comics
