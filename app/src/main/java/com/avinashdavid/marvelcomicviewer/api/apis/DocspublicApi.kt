@@ -10,6 +10,7 @@ import com.avinashdavid.marvelcomicviewer.api.tools.CSV
 import org.threeten.bp.ZonedDateTime
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Query
 
 @JvmSuppressWildcards
 interface DocspublicApi {
@@ -24,6 +25,9 @@ interface DocspublicApi {
     )
     @GET("v1/public/comics/{comicId}")
     suspend fun getComicIndividual(
+        @Query("apiKey") apiKey: String,
+        @Query("ts") timeStamp: Long,
+        @Query("hash") hash: String?,
         @retrofit2.http.Path("comicId") comicId: Int
     ): Unit
     /**
@@ -63,6 +67,9 @@ interface DocspublicApi {
     )
     @GET("v1/public/comics")
     suspend fun getComicsCollection(
+        @Query("apiKey") apiKey: String,
+        @Query("ts") timeStamp: Long,
+        @Query("hash") hash: String?,
         @retrofit2.http.Query("format") format: String?,
         @retrofit2.http.Query("formatType") formatType: String?,
         @retrofit2.http.Query("noVariants") noVariants: Boolean?,
@@ -117,6 +124,9 @@ interface DocspublicApi {
     )
     @GET("v1/public/comics/{comicId}/creators")
     suspend fun getCreatorCollection(
+        @Query("apiKey") apiKey: String,
+        @Query("ts") timeStamp: Long,
+        @Query("hash") hash: String?,
         @retrofit2.http.Path("comicId") comicId: Int,
         @retrofit2.http.Query("firstName") firstName: String?,
         @retrofit2.http.Query("middleName") middleName: String?,
