@@ -21,19 +21,17 @@ class ComicInfoFragment : Fragment() {
     private var _binding: FragmentComicInfoBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var creatorAdapter: CreatorAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentComicInfoBinding.inflate(inflater, container, false)
-        val view = binding.root
-
-        binding.btViewFullComicCover.setOnClickListener {
-            FullScreenImageViewerFragment.displayImage(requireActivity(), "https://www.comicbookdaily.com/wp-content/uploads/2020/10/t-dd-53.jpg")
-        }
-
-        return view
+        creatorAdapter = CreatorAdapter(requireActivity())
+        binding.rvComicCreators.adapter = creatorAdapter
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,6 +62,9 @@ class ComicInfoFragment : Fragment() {
                     } ?: run {
                         Toast.makeText(requireContext(), getString(R.string.message_cover_image_not_available), Toast.LENGTH_LONG).show()
                     }
+                }
+                comic.creators?.items?.let { creators ->
+                    creatorAdapter.setItems(creators.toList())
                 }
             }
         }

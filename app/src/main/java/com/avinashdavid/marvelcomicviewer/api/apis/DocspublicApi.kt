@@ -7,7 +7,6 @@
 package com.avinashdavid.marvelcomicviewer.api.apis
 
 import com.avinashdavid.marvelcomicviewer.api.models.ComicDataWrapper
-import com.avinashdavid.marvelcomicviewer.api.models.CreatorDataWrapper
 import com.avinashdavid.marvelcomicviewer.api.tools.CSV
 import org.threeten.bp.ZonedDateTime
 import retrofit2.http.GET
@@ -100,50 +99,4 @@ interface DocspublicApi {
         @retrofit2.http.Query("limit") limit: Int? = 100,
         @retrofit2.http.Query("offset") offset: Int? = 0,
     ): ComicDataWrapper?
-    /**
-     * Fetches lists of creators filtered by a comic id.
-     * Fetches lists of comic creators whose work appears in a specific comic, with optional filters. See notes on individual parameters below.
-     * The endpoint is owned by marvel service owner
-     * @param comicId The comic id. (required)
-     * @param firstName Filter by creator first name (e.g. brian). (optional)
-     * @param middleName Filter by creator middle name (e.g. Michael). (optional)
-     * @param lastName Filter by creator last name (e.g. Bendis). (optional)
-     * @param suffix Filter by suffix or honorific (e.g. Jr., Sr.). (optional)
-     * @param nameStartsWith Filter by creator names that match critera (e.g. B, St L). (optional)
-     * @param firstNameStartsWith Filter by creator first names that match critera (e.g. B, St L). (optional)
-     * @param middleNameStartsWith Filter by creator middle names that match critera (e.g. Mi). (optional)
-     * @param lastNameStartsWith Filter by creator last names that match critera (e.g. Ben). (optional)
-     * @param modifiedSince Return only creators which have been modified since the specified date. (optional)
-     * @param comics Return only creators who worked on in the specified comics (accepts a comma-separated list of ids). (optional)
-     * @param series Return only creators who worked on the specified series (accepts a comma-separated list of ids). (optional)
-     * @param stories Return only creators who worked on the specified stories (accepts a comma-separated list of ids). (optional)
-     * @param orderBy Order the result set by a field or fields. Add a \&quot;-\&quot; to the value sort in descending order. Multiple values are given priority in the order in which they are passed. (optional)
-     * @param limit Limit the result set to the specified number of resources. (optional)
-     * @param offset Skip the specified number of resources in the result set. (optional)
-     */
-    @Headers(
-        "X-Operation-ID: getCreatorCollection"
-    )
-    @GET("v1/public/comics/{comicId}/creators")
-    suspend fun getCreatorCollection(
-        @retrofit2.http.Path("comicId") comicId: Int,
-        @Query("apikey") apiKey: String,
-        @Query("ts") timeStamp: Long,
-        @Query("hash") hash: String?,
-        @retrofit2.http.Query("firstName") firstName: String? = null,
-        @retrofit2.http.Query("middleName") middleName: String? = null,
-        @retrofit2.http.Query("lastName") lastName: String? = null,
-        @retrofit2.http.Query("suffix") suffix: String? = null,
-        @retrofit2.http.Query("nameStartsWith") nameStartsWith: String? = null,
-        @retrofit2.http.Query("firstNameStartsWith") firstNameStartsWith: String? = null,
-        @retrofit2.http.Query("middleNameStartsWith") middleNameStartsWith: String? = null,
-        @retrofit2.http.Query("lastNameStartsWith") lastNameStartsWith: String? = null,
-        @retrofit2.http.Query("modifiedSince") modifiedSince: ZonedDateTime? = null,
-        @retrofit2.http.Query("comics") @CSV comics: List<Int>? = null,
-        @retrofit2.http.Query("series") @CSV series: List<Int>? = null,
-        @retrofit2.http.Query("stories") @CSV stories: List<Int>? = null,
-        @retrofit2.http.Query("orderBy") @CSV orderBy: List<String>? = null,
-        @retrofit2.http.Query("limit") limit: Int? = null,
-        @retrofit2.http.Query("offset") offset: Int? = null
-    ): CreatorDataWrapper?
 }
