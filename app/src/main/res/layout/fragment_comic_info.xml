@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btViewFullComicCover"
                 android:layout_gravity="bottom|end"
-                style="@style/Widget.MaterialComponents.Button.Icon"
+                style="@style/Button.Icon"
                 app:icon="@drawable/ic_baseline_zoom_out_map_24"
                 android:text="@string/view_full_image"
                 android:layout_marginEnd="8dp"/>
@@ -49,8 +49,12 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -80,5 +84,36 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btPrevious"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/Button.Icon"
+            app:icon="@drawable/ic_baseline_navigate_before_24"
+            android:text="@string/previous"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btNext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/Button.Icon"
+            app:icon="@drawable/ic_baseline_navigate_next_24"
+            android:layoutDirection="rtl"
+            android:text="@string/next"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -38,9 +38,19 @@ class ComicInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        comicListViewModel.comics.observe(viewLifecycleOwner) { comics ->
-            comics?.get(comicListViewModel.currentComicIndex)?.id?.let { comicId ->
-                comicInfoViewModel.initiate(comicId)
+        comicListViewModel.apply {
+            comics.observe(viewLifecycleOwner) { comics ->
+                comics?.getOrNull(currentComicIndex)?.id?.let { comicId ->
+                    comicInfoViewModel.initiate(comicId)
+                }
+                binding.btPrevious.apply {
+                    isEnabled = currentComicIndex > 0
+                    setOnClickListener { currentComicIndex-- }
+                }
+                binding.btNext.apply {
+                    isEnabled = currentComicIndex < maxComics - 1
+                    setOnClickListener { currentComicIndex++ }
+                }
             }
         }
         comicInfoViewModel.comics.observe(viewLifecycleOwner) { comic ->

@@ -4,7 +4,10 @@
     <string name="comic_info">Comic Info</string>
     <string name="view_full_image">View Full Image</string>
 
+    <string name="message_cover_image_not_available">Cover image not available</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+
     <string name="cd_imageviewer">Full screen image</string>
     <string name="cd_comic_cover">Comic cover image</string>
-    <string name="message_cover_image_not_available">Cover image not available</string>
 </resources>
