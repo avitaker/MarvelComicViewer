@@ -39,7 +39,7 @@ class ComicListViewModel: ViewModel() {
             withContext(Dispatchers.IO) {
                 val comicDataWrapper = marvelApi.getComicsCollection(
                     apiKey = signature.apiKey, timeStamp = signature.timestamp, hash = signature.hash,
-                    format = "comic", formatType = "comic", noVariants = true, limit = maxComics)
+                    format = "comic", formatType = "comic", noVariants = false, limit = maxComics)
                 _comics.postValue(comicDataWrapper?.data?.results)
             }
         }

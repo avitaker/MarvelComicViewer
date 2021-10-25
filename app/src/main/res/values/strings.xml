@@ -10,6 +10,8 @@
 
     <string name="creators">Creators</string>
 
+    <string name="format_featuring_characters">Featuring %1$s</string>
+
     <string name="cd_imageviewer">Full screen image</string>
     <string name="cd_comic_cover">Comic cover image</string>
 </resources>

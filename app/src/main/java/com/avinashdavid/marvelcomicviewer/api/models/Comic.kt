@@ -6,6 +6,8 @@
 
 package com.avinashdavid.marvelcomicviewer.api.models
 
+import android.content.Context
+import com.avinashdavid.marvelcomicviewer.R
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.util.*
@@ -73,4 +75,8 @@ data class Comic(
     @Json(name = "events") @field:Json(name = "events") var events: EventList? = null
 ) {
     fun coverImage() = images?.firstOrNull()?.imageUrl()
+    fun fullDescriptionString(context: Context) : String? {
+        val charactersString = characters?.items?.let { characters -> context.getString(R.string.format_featuring_characters, characters.map { it.name }.joinToString()) }
+        return description?.let { "$description\n\n$charactersString" } ?: run { charactersString }
+    }
 }

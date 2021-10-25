@@ -55,7 +55,7 @@ class ComicInfoFragment : Fragment() {
             comic?.let {
                 Glide.with(binding.ivComicCover).load(comic.coverImage()).into(binding.ivComicCover)
                 binding.tvComicTitle.text = comic.title
-                binding.tvComicDescription.text = comic.description
+                binding.tvComicDescription.text = comic.fullDescriptionString(requireContext())
                 binding.btViewFullComicCover.setOnClickListener {
                     comic.coverImage()?.let {
                         FullScreenImageViewerFragment.displayImage(requireActivity(), it)
