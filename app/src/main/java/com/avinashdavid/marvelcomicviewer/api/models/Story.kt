@@ -32,7 +32,6 @@ data class Story(
     @Json(name = "description") @field:Json(name = "description") var description: String? = null,
     @Json(name = "resourceURI") @field:Json(name = "resourceURI") var resourceURI: String? = null,
     @Json(name = "type") @field:Json(name = "type") var type: String? = null,
-    @Json(name = "modified") @field:Json(name = "modified") var modified: Date? = null,
     @Json(name = "thumbnail") @field:Json(name = "thumbnail") var thumbnail: Image? = null,
     @Json(name = "comics") @field:Json(name = "comics") var comics: ComicList? = null,
     @Json(name = "series") @field:Json(name = "series") var series: SeriesList? = null,

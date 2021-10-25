@@ -34,7 +34,6 @@ data class Creator(
     @Json(name = "lastName") @field:Json(name = "lastName") var lastName: String? = null,
     @Json(name = "suffix") @field:Json(name = "suffix") var suffix: String? = null,
     @Json(name = "fullName") @field:Json(name = "fullName") var fullName: String? = null,
-    @Json(name = "modified") @field:Json(name = "modified") var modified: Date? = null,
     @Json(name = "resourceURI") @field:Json(name = "resourceURI") var resourceURI: String? = null,
     @Json(name = "urls") @field:Json(name = "urls") var urls: Array<Url>? = null,
     @Json(name = "thumbnail") @field:Json(name = "thumbnail") var thumbnail: Image? = null,

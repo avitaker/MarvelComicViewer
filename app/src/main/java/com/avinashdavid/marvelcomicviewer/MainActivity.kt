@@ -2,10 +2,14 @@ package com.avinashdavid.marvelcomicviewer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.navigation.findNavController
+import com.avinashdavid.marvelcomicviewer.comicList.ComicListViewModel
 import java.lang.ref.WeakReference
 
 class MainActivity : AppCompatActivity() {
+    private val comicListViewModel: ComicListViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         instance = WeakReference(this)
@@ -16,6 +20,9 @@ class MainActivity : AppCompatActivity() {
                     title = getString(R.string.comic_info)
                 }
             }
+        }
+        if (savedInstanceState == null) {
+            comicListViewModel.initiate()
         }
     }
 

@@ -17,5 +17,5 @@ import java.util.*
 @JsonClass(generateAdapter = true)
 data class ComicDate(
     @Json(name = "type") @field:Json(name = "type") var type: String? = null,
-    @Json(name = "date") @field:Json(name = "date") var date: Date? = null
+    @Json(name = "date") @field:Json(name = "date") var date: String? = null
 )

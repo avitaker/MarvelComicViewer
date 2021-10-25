@@ -17,4 +17,6 @@ import com.squareup.moshi.JsonClass
 data class Image(
     @Json(name = "path") @field:Json(name = "path") var path: String? = null,
     @Json(name = "extension") @field:Json(name = "extension") var extension: String? = null
-)
+) {
+    fun imageUrl() = path?.let { "$path/clean.jpg" }
+}

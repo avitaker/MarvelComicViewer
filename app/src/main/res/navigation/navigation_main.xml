@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/comicInfoFragment"
-        android:name="com.avinashdavid.marvelcomicviewer.comic.ComicInfoFragment"
+        android:name="com.avinashdavid.marvelcomicviewer.comicInfo.ComicInfoFragment"
         android:label="ComicInfoFragment" />
 </navigation>

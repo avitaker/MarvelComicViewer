@@ -6,6 +6,8 @@
 
 package com.avinashdavid.marvelcomicviewer.api.apis
 
+import com.avinashdavid.marvelcomicviewer.api.models.ComicDataWrapper
+import com.avinashdavid.marvelcomicviewer.api.models.CreatorDataWrapper
 import com.avinashdavid.marvelcomicviewer.api.tools.CSV
 import org.threeten.bp.ZonedDateTime
 import retrofit2.http.GET
@@ -25,11 +27,11 @@ interface DocspublicApi {
     )
     @GET("v1/public/comics/{comicId}")
     suspend fun getComicIndividual(
-        @Query("apiKey") apiKey: String,
-        @Query("ts") timeStamp: Long,
+        @retrofit2.http.Path("comicId") comicId: Int,
+        @Query("ts") timeStamp: String,
+        @Query("apikey") apiKey: String,
         @Query("hash") hash: String?,
-        @retrofit2.http.Path("comicId") comicId: Int
-    ): Unit
+    ): ComicDataWrapper?
     /**
      * Fetches lists of comics.
      * Fetches lists of comics with optional filters. See notes on individual parameters below.
@@ -67,37 +69,37 @@ interface DocspublicApi {
     )
     @GET("v1/public/comics")
     suspend fun getComicsCollection(
-        @Query("apiKey") apiKey: String,
-        @Query("ts") timeStamp: Long,
+        @Query("ts") timeStamp: String,
+        @Query("apikey") apiKey: String,
         @Query("hash") hash: String?,
         @retrofit2.http.Query("format") format: String?,
         @retrofit2.http.Query("formatType") formatType: String?,
         @retrofit2.http.Query("noVariants") noVariants: Boolean?,
-        @retrofit2.http.Query("dateDescriptor") dateDescriptor: String?,
-        @retrofit2.http.Query("dateRange") @CSV dateRange: List<Int>?,
-        @retrofit2.http.Query("title") title: String?,
-        @retrofit2.http.Query("titleStartsWith") titleStartsWith: String?,
-        @retrofit2.http.Query("startYear") startYear: Int?,
-        @retrofit2.http.Query("issueNumber") issueNumber: Int?,
-        @retrofit2.http.Query("diamondCode") diamondCode: String?,
-        @retrofit2.http.Query("digitalId") digitalId: Int?,
-        @retrofit2.http.Query("upc") upc: String?,
-        @retrofit2.http.Query("isbn") isbn: String?,
-        @retrofit2.http.Query("ean") ean: String?,
-        @retrofit2.http.Query("issn") issn: String?,
-        @retrofit2.http.Query("hasDigitalIssue") hasDigitalIssue: Boolean?,
-        @retrofit2.http.Query("modifiedSince") modifiedSince: ZonedDateTime?,
-        @retrofit2.http.Query("creators") @CSV creators: List<Int>?,
-        @retrofit2.http.Query("characters") @CSV characters: List<Int>?,
-        @retrofit2.http.Query("series") @CSV series: List<Int>?,
-        @retrofit2.http.Query("events") @CSV events: List<Int>?,
-        @retrofit2.http.Query("stories") @CSV stories: List<Int>?,
-        @retrofit2.http.Query("sharedAppearances") @CSV sharedAppearances: List<Int>?,
-        @retrofit2.http.Query("collaborators") @CSV collaborators: List<Int>?,
-        @retrofit2.http.Query("orderBy") @CSV orderBy: List<String>?,
-        @retrofit2.http.Query("limit") limit: Int?,
-        @retrofit2.http.Query("offset") offset: Int?
-    ): Unit
+        @retrofit2.http.Query("dateDescriptor") dateDescriptor: String? = null,
+        @retrofit2.http.Query("dateRange") @CSV dateRange: List<Int>? = null,
+        @retrofit2.http.Query("title") title: String? = null,
+        @retrofit2.http.Query("titleStartsWith") titleStartsWith: String? = null,
+        @retrofit2.http.Query("startYear") startYear: Int? = null,
+        @retrofit2.http.Query("issueNumber") issueNumber: Int? = null,
+        @retrofit2.http.Query("diamondCode") diamondCode: String? = null,
+        @retrofit2.http.Query("digitalId") digitalId: Int? = null,
+        @retrofit2.http.Query("upc") upc: String? = null,
+        @retrofit2.http.Query("isbn") isbn: String? = null,
+        @retrofit2.http.Query("ean") ean: String? = null,
+        @retrofit2.http.Query("issn") issn: String? = null,
+        @retrofit2.http.Query("hasDigitalIssue") hasDigitalIssue: Boolean? = true,
+        @retrofit2.http.Query("modifiedSince") modifiedSince: ZonedDateTime? = null,
+        @retrofit2.http.Query("creators") @CSV creators: List<Int>? = null,
+        @retrofit2.http.Query("characters") @CSV characters: List<Int>? = null,
+        @retrofit2.http.Query("series") @CSV series: List<Int>? = null,
+        @retrofit2.http.Query("events") @CSV events: List<Int>? = null,
+        @retrofit2.http.Query("stories") @CSV stories: List<Int>? = null,
+        @retrofit2.http.Query("sharedAppearances") @CSV sharedAppearances: List<Int>? = null,
+        @retrofit2.http.Query("collaborators") @CSV collaborators: List<Int>? = null,
+        @retrofit2.http.Query("orderBy") @CSV orderBy: List<String>? = null,
+        @retrofit2.http.Query("limit") limit: Int? = 100,
+        @retrofit2.http.Query("offset") offset: Int? = 0,
+    ): ComicDataWrapper?
     /**
      * Fetches lists of creators filtered by a comic id.
      * Fetches lists of comic creators whose work appears in a specific comic, with optional filters. See notes on individual parameters below.
@@ -124,24 +126,24 @@ interface DocspublicApi {
     )
     @GET("v1/public/comics/{comicId}/creators")
     suspend fun getCreatorCollection(
-        @Query("apiKey") apiKey: String,
+        @retrofit2.http.Path("comicId") comicId: Int,
+        @Query("apikey") apiKey: String,
         @Query("ts") timeStamp: Long,
         @Query("hash") hash: String?,
-        @retrofit2.http.Path("comicId") comicId: Int,
-        @retrofit2.http.Query("firstName") firstName: String?,
-        @retrofit2.http.Query("middleName") middleName: String?,
-        @retrofit2.http.Query("lastName") lastName: String?,
-        @retrofit2.http.Query("suffix") suffix: String?,
-        @retrofit2.http.Query("nameStartsWith") nameStartsWith: String?,
-        @retrofit2.http.Query("firstNameStartsWith") firstNameStartsWith: String?,
-        @retrofit2.http.Query("middleNameStartsWith") middleNameStartsWith: String?,
-        @retrofit2.http.Query("lastNameStartsWith") lastNameStartsWith: String?,
-        @retrofit2.http.Query("modifiedSince") modifiedSince: ZonedDateTime?,
-        @retrofit2.http.Query("comics") @CSV comics: List<Int>?,
-        @retrofit2.http.Query("series") @CSV series: List<Int>?,
-        @retrofit2.http.Query("stories") @CSV stories: List<Int>?,
-        @retrofit2.http.Query("orderBy") @CSV orderBy: List<String>?,
-        @retrofit2.http.Query("limit") limit: Int?,
-        @retrofit2.http.Query("offset") offset: Int?
-    ): Unit
+        @retrofit2.http.Query("firstName") firstName: String? = null,
+        @retrofit2.http.Query("middleName") middleName: String? = null,
+        @retrofit2.http.Query("lastName") lastName: String? = null,
+        @retrofit2.http.Query("suffix") suffix: String? = null,
+        @retrofit2.http.Query("nameStartsWith") nameStartsWith: String? = null,
+        @retrofit2.http.Query("firstNameStartsWith") firstNameStartsWith: String? = null,
+        @retrofit2.http.Query("middleNameStartsWith") middleNameStartsWith: String? = null,
+        @retrofit2.http.Query("lastNameStartsWith") lastNameStartsWith: String? = null,
+        @retrofit2.http.Query("modifiedSince") modifiedSince: ZonedDateTime? = null,
+        @retrofit2.http.Query("comics") @CSV comics: List<Int>? = null,
+        @retrofit2.http.Query("series") @CSV series: List<Int>? = null,
+        @retrofit2.http.Query("stories") @CSV stories: List<Int>? = null,
+        @retrofit2.http.Query("orderBy") @CSV orderBy: List<String>? = null,
+        @retrofit2.http.Query("limit") limit: Int? = null,
+        @retrofit2.http.Query("offset") offset: Int? = null
+    ): CreatorDataWrapper?
 }

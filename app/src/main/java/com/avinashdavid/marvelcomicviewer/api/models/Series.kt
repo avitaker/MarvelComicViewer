@@ -39,7 +39,6 @@ data class Series(
     @Json(name = "startYear") @field:Json(name = "startYear") var startYear: Int? = null,
     @Json(name = "endYear") @field:Json(name = "endYear") var endYear: Int? = null,
     @Json(name = "rating") @field:Json(name = "rating") var rating: String? = null,
-    @Json(name = "modified") @field:Json(name = "modified") var modified: Date? = null,
     @Json(name = "thumbnail") @field:Json(name = "thumbnail") var thumbnail: Image? = null,
     @Json(name = "comics") @field:Json(name = "comics") var comics: ComicList? = null,
     @Json(name = "stories") @field:Json(name = "stories") var stories: StoryList? = null,

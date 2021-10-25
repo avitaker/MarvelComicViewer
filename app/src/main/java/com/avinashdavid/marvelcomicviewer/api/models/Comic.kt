@@ -49,7 +49,6 @@ data class Comic(
     @Json(name = "issueNumber") @field:Json(name = "issueNumber") var issueNumber: Double? = null,
     @Json(name = "variantDescription") @field:Json(name = "variantDescription") var variantDescription: String? = null,
     @Json(name = "description") @field:Json(name = "description") var description: String? = null,
-    @Json(name = "modified") @field:Json(name = "modified") var modified: Date? = null,
     @Json(name = "isbn") @field:Json(name = "isbn") var isbn: String? = null,
     @Json(name = "upc") @field:Json(name = "upc") var upc: String? = null,
     @Json(name = "diamondCode") @field:Json(name = "diamondCode") var diamondCode: String? = null,
@@ -72,4 +71,6 @@ data class Comic(
     @Json(name = "characters") @field:Json(name = "characters") var characters: CharacterList? = null,
     @Json(name = "stories") @field:Json(name = "stories") var stories: StoryList? = null,
     @Json(name = "events") @field:Json(name = "events") var events: EventList? = null
-)
+) {
+    fun coverImage() = images?.firstOrNull()?.imageUrl()
+}

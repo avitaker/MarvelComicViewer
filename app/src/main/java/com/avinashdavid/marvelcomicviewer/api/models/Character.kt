@@ -28,7 +28,6 @@ data class Character(
     @Json(name = "id") @field:Json(name = "id") var id: Int? = null,
     @Json(name = "name") @field:Json(name = "name") var name: String? = null,
     @Json(name = "description") @field:Json(name = "description") var description: String? = null,
-    @Json(name = "modified") @field:Json(name = "modified") var modified: Date? = null,
     @Json(name = "resourceURI") @field:Json(name = "resourceURI") var resourceURI: String? = null,
     @Json(name = "urls") @field:Json(name = "urls") var urls: Array<Url>? = null,
     @Json(name = "thumbnail") @field:Json(name = "thumbnail") var thumbnail: Image? = null,
