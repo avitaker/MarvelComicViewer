@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text.Body" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
