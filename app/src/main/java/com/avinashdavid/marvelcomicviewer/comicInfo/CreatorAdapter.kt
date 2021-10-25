@@ -39,7 +39,7 @@ class CreatorAdapterDelegate(activity: FragmentActivity) : BaseAdapterDelegate(a
     }
 
     class CreatorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvCreator = itemView.findViewById<TextView>(R.id.tvCreator)
-        val tvCreatorRole = itemView.findViewById<TextView>(R.id.tvCreatorRole)
+        val tvCreator: TextView = itemView.findViewById(R.id.tvCreator)
+        val tvCreatorRole: TextView = itemView.findViewById(R.id.tvCreatorRole)
     }
 }

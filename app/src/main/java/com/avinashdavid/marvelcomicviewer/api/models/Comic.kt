@@ -76,7 +76,10 @@ data class Comic(
 ) {
     fun coverImage() = images?.firstOrNull()?.imageUrl()
     fun fullDescriptionString(context: Context) : String? {
-        val charactersString = characters?.items?.let { characters -> context.getString(R.string.format_featuring_characters, characters.map { it.name }.joinToString()) }
+        val characters = characters?.items
+        val charactersString = if (characters != null && characters.count() > 0) {
+            context.getString(R.string.format_featuring_characters, characters.map { it.name }.joinToString())
+        } else { "-" }
         return description?.let { "$description\n\n$charactersString" } ?: run { charactersString }
     }
 }

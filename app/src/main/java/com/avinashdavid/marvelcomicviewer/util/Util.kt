@@ -2,6 +2,8 @@ package com.avinashdavid.marvelcomicviewer
 
 import android.content.SharedPreferences
 import android.os.Build
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
@@ -36,17 +38,6 @@ fun encryptedMarvelSharedPreferencesIfAvailable() : SharedPreferences {
 }
 
 fun makeMD5(md5: String): String {
-//    var m: MessageDigest? = null
-//
-//    try {
-//        m = MessageDigest.getInstance("MD5")
-//    } catch (e: NoSuchAlgorithmException) {
-//        e.printStackTrace()
-//    }
-//
-//    m!!.update(md5.toByteArray(), 0, md5.length)
-//    return BigInteger(1, m.digest()).toString(16)
-
     val MD5 = "MD5"
     try {
         // Create MD5 Hash
@@ -67,6 +58,4 @@ fun makeMD5(md5: String): String {
         e.printStackTrace()
     }
     return ""
-
-//    return String(Hex.encodeHex(DigestUtils.md5(md5)))
 }

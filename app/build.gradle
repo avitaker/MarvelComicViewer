@@ -34,6 +34,11 @@ android {
     buildFeatures {
         viewBinding true
     }
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.test:monitor:1.4.0'
+        }
+    }
 }
 
 dependencies {
@@ -84,6 +89,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 }
 
 generateSwagger {
@@ -93,4 +100,11 @@ generateSwagger {
     specVersion="1.0"
     inputFile = file("./apiSwagger.json")
     outputDir = file("./src/main/java/")
+}
+
+apply plugin: 'kotlin-allopen'
+apply plugin: 'kotlin-android'
+
+allOpen {
+    annotation("com.avinashdavid.marvelcomicviewer.OpenForTest")
 }
