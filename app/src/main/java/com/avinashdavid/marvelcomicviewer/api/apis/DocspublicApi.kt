@@ -95,7 +95,7 @@ interface DocspublicApi {
         @retrofit2.http.Query("stories") @CSV stories: List<Int>? = null,
         @retrofit2.http.Query("sharedAppearances") @CSV sharedAppearances: List<Int>? = null,
         @retrofit2.http.Query("collaborators") @CSV collaborators: List<Int>? = null,
-        @retrofit2.http.Query("orderBy") @CSV orderBy: List<String>? = listOf("-modified"),
+        @retrofit2.http.Query("orderBy") @CSV orderBy: List<String>? = listOf("-onsaleDate"),
         @retrofit2.http.Query("limit") limit: Int? = 100,
         @retrofit2.http.Query("offset") offset: Int? = 0,
     ): ComicDataWrapper?

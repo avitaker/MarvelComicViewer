@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ComicListViewModel: ViewModel() {
-    val maxComics = 20
+    val maxComics = 50
 
     private val _comics = MutableLiveData<Array<Comic>?>(null)
     val comics: LiveData<Array<Comic>?> get() = _comics
