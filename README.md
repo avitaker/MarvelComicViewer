@@ -12,7 +12,7 @@ Marvel Comic Viewer is an app that shows you basic information of the 100 most r
 - Ensure that installed Kotlin version is equal to or greater than version specified in app level build.gradle
 - Obtain Marvel API keys (public and private)
 - Add the following code to local.properties
->MARVEL_PUBLIC_KEY=${your public key}
+>MARVEL_PUBLIC_KEY=${your public key}  
 >MARVEL_PRIVATE_KEY=${your private key}
 - Make Project
 - Build and run on emulator or device
